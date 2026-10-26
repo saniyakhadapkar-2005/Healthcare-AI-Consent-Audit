@@ -342,7 +342,7 @@ GitHub: https://github.com/saniyakhadapkar-2005/Healthcare-AI-Consent-Audit
    
 <img width="1023" height="907" alt="LOGIN_PAGE" src="https://github.com/user-attachments/assets/e26352db-d275-4a74-9c03-aea178c385a8" />
 
-2.Dashboard 
+2.Patient Dashboard
 
 <img width="1600" height="928" alt="dashboard" src="https://github.com/user-attachments/assets/75f7c16e-c702-4267-8692-efee6ad824c9" />
 
@@ -355,7 +355,7 @@ GitHub: https://github.com/saniyakhadapkar-2005/Healthcare-AI-Consent-Audit
 
 <img width="1497" height="922" alt="Consent Management" src="https://github.com/user-attachments/assets/38c6a5da-8136-433d-8513-6fad443bcbb4" />
 
-5.Blockchain Dashboard 
+5.Blockchain Audit Page 
 
 <img width="1385" height="885" alt="BLOCKCHAIN_DASHBOARD" src="https://github.com/user-attachments/assets/4fa04c36-5ef1-47cc-8320-e883c4691732" />
 
