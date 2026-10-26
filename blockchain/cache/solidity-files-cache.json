@@ -1,0 +1,41 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "D:\\Users\\Administrator\\Downloads\\Healthcare_AI_Consent_Audit_Python_Professional_UI_Hardhat_FINAL_FIXED\\healthcare-ai-consent-audit-full\\blockchain\\contracts\\HealthcareConsentAudit.sol": {
+      "lastModificationDate": 1790876714856,
+      "contentHash": "37ee82665056a9e445a833997cffb700",
+      "sourceName": "contracts/HealthcareConsentAudit.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "HealthcareConsentAudit"
+      ]
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sign in · MedChain</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body class="auth">
+
+<div class="auth-card">
+
+    <div class="brand">MED<span>CHAIN</span></div>
+
+    <div class="eyebrow">SECURE AI GOVERNANCE</div>
+
+    <h1>Welcome back</h1>
+
+    <p class="muted">
+        Sign in to the healthcare consent and inference audit workspace.
+    </p>
+
+    <!-- Login Form -->
+    <form method="post" action="/login">
+
+        <label>Username</label>
+        <input
+            name="username"
+            autocomplete="username"
+            placeholder="Enter username"
+            required
+        >
+
+        <label>Password</label>
+        <input
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter password"
+            required
+        >
+
+        <button class="primary" type="submit">
+            Sign in to workspace
+        </button>
+
+    </form>
+
+    <!-- Patient Registration -->
+    <p class="muted" style="text-align:center;margin-top:16px;">
+        New patient?
+        <a href="/register">Create a patient account</a>
+    </p>
+
+    <!-- Demo Credentials -->
+    <div class="demo-box">
+        <b>Demo access</b>
+        <br>
+        Patient · <code>patient / patient123</code>
+        <br>
+        Provider · <code>provider / provider123</code>
+        <br>
+        Admin · <code>admin / admin123</code>
+    </div>
+
+</div>
+
+</body>
+</html>

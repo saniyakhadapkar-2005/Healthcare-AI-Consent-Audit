@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Consent Management | MedChain</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/app.css') }}"
+    >
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+            MC
+        </div>
+
+        <div>
+
+            <div class="brand-title">
+                MedChain
+            </div>
+
+            <div class="brand-subtitle">
+                Healthcare AI Consent Audit
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a
+            id="consentNav"
+            href="/consent"
+        >
+            Consent
+        </a>
+
+        <a
+            id="inferenceNav"
+            href="/inference"
+        >
+            AI Inference
+        </a>
+
+        <a
+            id="modelsNav"
+            href="/admin/models"
+        >
+            Models
+        </a>
+
+        <a href="/blockchain">
+            Blockchain
+        </a>
+
+        <a href="/logout">
+            Sign out
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-head">
+
+        <div>
+
+            <div class="eyebrow">
+                PATIENT CONTROL CENTER
+            </div>
+
+            <h1>
+                Consent Management
+            </h1>
+
+            <p class="muted">
+                Grant and manage scoped authorization for
+                AI model usage.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- GRANT CONSENT -->
+
+    <section class="card">
+
+        <div class="card-head">
+
+            <div>
+
+                <h2>
+                    Grant Consent
+                </h2>
+
+                <p class="muted">
+                    Authorize a specific provider to use an
+                    approved AI model for a defined purpose.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form
+            id="grantForm"
+            onsubmit="grantConsent(event)"
+        >
+
+            <div class="form-grid">
+
+
+                <!-- PROVIDER -->
+
+                <div class="field">
+
+                    <label for="providerUsername">
+                        Provider
+                    </label>
+
+                    <select
+                        id="providerUsername"
+                        required
+                    >
+
+                        <option value="">
+                            Select provider
+                        </option>
+
+                        <option value="provider">
+                            provider
+                        </option>
+
+                        <option value="provider2">
+                            provider2
+                        </option>
+
+                    </select>
+
+                    <small class="muted">
+                        Select the provider who is authorized
+                        to perform the AI inference.
+                    </small>
+
+                </div>
+
+
+
+                <!-- SUBJECT ID -->
+
+                <div class="field">
+
+                    <label for="subjectId">
+                        Subject ID
+                    </label>
+
+                    <input
+                        id="subjectId"
+                        type="text"
+                        value="SYNTHETIC_PATIENT_001"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- AI MODEL -->
+
+                <div class="field">
+
+                    <label for="modelId">
+                        AI Model
+                    </label>
+
+                    <select
+                        id="modelId"
+                        required
+                    >
+
+                        <option value="">
+                            Loading models...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- PURPOSE -->
+
+                <div class="field">
+
+                    <label for="purpose">
+                        Purpose
+                    </label>
+
+                    <input
+                        id="purpose"
+                        type="text"
+                        value="NON_CLINICAL_SCORING"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- VALIDITY -->
+
+                <div class="field">
+
+                    <label for="hours">
+                        Validity
+                    </label>
+
+                    <input
+                        id="hours"
+                        type="number"
+                        min="1"
+                        value="24"
+                        required
+                    >
+
+                    <small class="muted">
+                        Consent validity in hours.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div style="margin-top:18px;">
+
+                <button
+                    type="submit"
+                    class="primary"
+                >
+                    Grant Consent
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div
+            id="grantMsg"
+            style="margin-top:18px;"
+        ></div>
+
+    </section>
+
+
+
+    <!-- EXISTING CONSENTS -->
+
+    <section class="card">
+
+        <div class="card-head">
+
+            <div>
+
+                <h2>
+                    Existing Consents
+                </h2>
+
+                <p class="muted">
+                    Review active and revoked consent records.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="consentList">
+
+            <div class="empty">
+                Loading consent records...
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- NAVIGATION -->
+
+    <section style="margin-top:20px;">
+
+        <a
+            href="/dashboard"
+            class="secondary"
+        >
+            ← Back to Dashboard
+        </a>
+
+    </section>
+
+
+</main>
+
+
+
+<script
+    src="{{ url_for('static', filename='js/app.js') }}"
+></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /*
+         * Load active AI models.
+         *
+         * The model dropdown will be populated
+         * from the backend.
+         */
+
+        if (typeof loadModels === "function") {
+
+            loadModels("modelId");
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

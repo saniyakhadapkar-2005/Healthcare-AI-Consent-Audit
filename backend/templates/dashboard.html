@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard · MedChain</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+        MED<span>CHAIN</span>
+    </div>
+
+    <nav>
+
+        <a class="active" href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/consent" id="consentNav">
+            Consent
+        </a>
+
+        <a href="/inference" id="inferenceNav">
+            AI Inference
+        </a>
+
+        <a href="/blockchain">
+            Blockchain
+        </a>
+
+        <a href="/admin/models" id="modelsNav">
+            Models
+        </a>
+
+        <form method="post" action="/logout">
+            <button class="link-btn" type="submit">
+                Sign out
+            </button>
+        </form>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero">
+
+        <div>
+
+            <div class="eyebrow">
+                HEALTHCARE AI CONSENT AUDIT
+            </div>
+
+            <h1>
+                Secure AI consent and
+                blockchain-backed audit
+            </h1>
+
+            <p>
+                MedChain provides a controlled workflow for
+                healthcare AI consent, model authorization,
+                inference access, and tamper-evident audit records.
+            </p>
+
+        </div>
+
+
+        <div class="hero-icon">
+            ⛓
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATISTICS
+         ===================================================== -->
+
+    <section class="stats">
+
+        <div>
+
+            <span id="s1">
+                0
+            </span>
+
+            <small>
+                Total Consents
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <span id="s2">
+                0
+            </span>
+
+            <small>
+                Active Models
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <span id="s3">
+                0
+            </span>
+
+            <small>
+                Audit Records
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SYSTEM OVERVIEW
+         ===================================================== -->
+
+    <div class="grid-2">
+
+
+        <!-- Consent Workflow -->
+
+        <section class="card">
+
+            <div class="section-label">
+                CONSENT WORKFLOW
+            </div>
+
+            <h2>
+                Controlled authorization
+            </h2>
+
+            <p>
+                Patients can grant scoped consent to an
+                authorized provider for a registered AI model.
+            </p>
+
+
+            <ol class="steps">
+
+                <li>
+                    Patient creates consent
+                </li>
+
+                <li>
+                    Provider and AI model are specified
+                </li>
+
+                <li>
+                    Consent is recorded on blockchain
+                </li>
+
+                <li>
+                    Consent can be revoked by the patient
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- AI Authorization -->
+
+        <section class="card">
+
+            <div class="section-label">
+                AI AUTHORIZATION
+            </div>
+
+            <h2>
+                Policy-controlled inference
+            </h2>
+
+            <p>
+                AI inference is allowed only when the consent,
+                provider, model, purpose, and expiry conditions
+                are valid.
+            </p>
+
+
+            <ol class="steps">
+
+                <li>
+                    Provider selects a consent
+                </li>
+
+                <li>
+                    System validates authorization
+                </li>
+
+                <li>
+                    AI inference is executed
+                </li>
+
+                <li>
+                    Inference receipt is recorded
+                </li>
+
+            </ol>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         DATA MINIMIZATION
+         ===================================================== -->
+
+    <section class="card">
+
+        <div class="section-label">
+            PRIVACY BY DESIGN
+        </div>
+
+        <h2>
+            Data minimization
+        </h2>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <tr>
+                    <th>
+                        Data
+                    </th>
+
+                    <th>
+                        Storage
+                    </th>
+
+                    <th>
+                        Purpose
+                    </th>
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Consent metadata
+                    </td>
+
+                    <td class="ok">
+                        Blockchain
+                    </td>
+
+                    <td>
+                        Authorization evidence
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Patient medical record
+                    </td>
+
+                    <td>
+                        Off-chain
+                    </td>
+
+                    <td>
+                        Privacy protection
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Model digest
+                    </td>
+
+                    <td class="ok">
+                        Blockchain
+                    </td>
+
+                    <td>
+                        Model integrity
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Output digest
+                    </td>
+
+                    <td class="ok">
+                        Blockchain
+                    </td>
+
+                    <td>
+                        Inference receipt integrity
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Raw AI input
+                    </td>
+
+                    <td>
+                        Off-chain
+                    </td>
+
+                    <td>
+                        Minimize data exposure
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SYSTEM STATUS
+         ===================================================== -->
+
+    <section class="card">
+
+        <div class="section-label">
+            SYSTEM
+        </div>
+
+        <h2>
+            MedChain architecture
+        </h2>
+
+        <div class="grid-2">
+
+            <div>
+
+                <h3>
+                    Application layer
+                </h3>
+
+                <p>
+                    Python Flask backend with role-based
+                    access control and SQLite persistence.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Blockchain layer
+                </h3>
+
+                <p>
+                    Solidity smart contract deployed on the
+                    local Hardhat blockchain through Web3.py.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Authorization layer
+                </h3>
+
+                <p>
+                    Consent validity is checked using provider,
+                    model, purpose, revocation, and expiry rules.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Audit layer
+                </h3>
+
+                <p>
+                    Model and inference digests provide
+                    tamper-evident audit evidence.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script src="/js/app.js"></script>
+
+</body>
+
+</html>

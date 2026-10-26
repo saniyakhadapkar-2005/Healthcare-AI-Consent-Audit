@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Inference | MedChain</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/app.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-mark">MC</div>
+
+        <div>
+            <div class="brand-title">MedChain</div>
+            <div class="brand-subtitle">
+                Healthcare AI Consent Audit
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav">
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a
+            id="consentNav"
+            href="/consent"
+        >
+            Consent
+        </a>
+
+        <a
+            id="inferenceNav"
+            href="/inference"
+        >
+            AI Inference
+        </a>
+
+        <a
+            id="modelsNav"
+            href="/admin/models"
+        >
+            Models
+        </a>
+
+        <a href="/blockchain">
+            Blockchain
+        </a>
+
+        <a href="/logout">
+            Sign out
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-head">
+
+        <div>
+
+            <div class="eyebrow">
+                PROVIDER CONTROL CENTER
+            </div>
+
+            <h1>
+                AI Inference
+            </h1>
+
+            <p class="muted">
+                Execute an AI inference only when a valid
+                patient consent authorizes the requested model
+                and purpose.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFERENCE CARD -->
+
+    <section class="card">
+
+        <div class="card-head">
+
+            <div>
+                <h2>
+                    Run Authorized Inference
+                </h2>
+
+                <p class="muted">
+                    The logged-in provider identity is used
+                    automatically for authorization.
+                </p>
+            </div>
+
+        </div>
+
+
+        <form
+            id="inferenceForm"
+            onsubmit="runInference(event)"
+        >
+
+            <div class="form-grid">
+
+
+                <!-- PROVIDER -->
+
+                <div class="field">
+
+                    <label for="inferProvider">
+                        Provider
+                    </label>
+
+                    <input
+                        id="inferProvider"
+                        type="text"
+                        value="Loading..."
+                        readonly
+                    >
+
+                    <small class="muted">
+                        Provider identity comes from the logged-in account.
+                    </small>
+
+                </div>
+
+
+                <!-- CONSENT ID -->
+
+                <div class="field">
+
+                    <label for="inferConsent">
+                        Consent ID
+                    </label>
+
+                    <input
+                        id="inferConsent"
+                        type="text"
+                        placeholder="Enter consent ID"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SUBJECT ID -->
+
+                <div class="field">
+
+                    <label for="inferSubject">
+                        Subject ID
+                    </label>
+
+                    <input
+                        id="inferSubject"
+                        type="text"
+                        placeholder="e.g. SYNTHETIC_PATIENT_001"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- AI MODEL -->
+
+                <div class="field">
+
+                    <label for="inferModel">
+                        AI Model
+                    </label>
+
+                    <select
+                        id="inferModel"
+                        required
+                    >
+
+                        <option value="">
+                            Loading models...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- AGE -->
+
+                <div class="field">
+
+                    <label for="age">
+                        Age
+                    </label>
+
+                    <input
+                        id="age"
+                        type="number"
+                        min="1"
+                        max="120"
+                        placeholder="e.g. 45"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- BLOOD PRESSURE -->
+
+                <div class="field">
+
+                    <label for="bp">
+                        Blood Pressure
+                    </label>
+
+                    <input
+                        id="bp"
+                        type="number"
+                        min="50"
+                        max="250"
+                        placeholder="e.g. 120"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CHOLESTEROL -->
+
+                <div class="field">
+
+                    <label for="chol">
+                        Cholesterol
+                    </label>
+
+                    <input
+                        id="chol"
+                        type="number"
+                        min="50"
+                        max="500"
+                        placeholder="e.g. 180"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div style="margin-top:18px;">
+
+                <button
+                    type="submit"
+                    class="primary"
+                >
+                    Run Inference
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <!-- RESULT -->
+
+        <div
+            id="inferResult"
+            style="margin-top:20px;"
+        ></div>
+
+    </section>
+
+
+    <!-- ACCESS POLICY -->
+
+    <section class="card">
+
+        <div class="card-head">
+
+            <div>
+
+                <h2>
+                    Access Policy
+                </h2>
+
+                <p class="muted">
+                    Inference is accepted only when all
+                    authorization conditions are satisfied.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Condition
+                        </th>
+
+                        <th>
+                            Required
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Consent exists
+                        </td>
+
+                        <td>
+                            Yes
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Consent not revoked
+                        </td>
+
+                        <td>
+                            Yes
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Provider matches
+                        </td>
+
+                        <td>
+                            Logged-in provider
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Model matches
+                        </td>
+
+                        <td>
+                            Consent-authorized model
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Consent not expired
+                        </td>
+
+                        <td>
+                            Yes
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+
+    <section style="margin-top:20px;">
+
+        <a
+            href="/dashboard"
+            class="secondary"
+        >
+            ← Back to Dashboard
+        </a>
+
+    </section>
+
+</main>
+
+
+<script
+    src="{{ url_for('static', filename='js/app.js') }}"
+></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
+
+        /*
+         * Load the logged-in provider identity.
+         *
+         * This is READ-ONLY in the UI.
+         * The backend remains responsible for
+         * authorization using the session identity.
+         */
+
+        try {
+
+            const response = await fetch("/api/me");
+
+            if (!response.ok) {
+                throw new Error("Unable to load user information.");
+            }
+
+            const user = await response.json();
+
+            const providerField =
+                document.getElementById("inferProvider");
+
+            if (providerField) {
+
+                providerField.value =
+                    user.username || "Unknown";
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Provider identity loading failed:",
+                error
+            );
+
+            const providerField =
+                document.getElementById("inferProvider");
+
+            if (providerField) {
+
+                providerField.value =
+                    "Unable to load";
+
+            }
+
+        }
+
+
+        /*
+         * Load active AI models.
+         */
+
+        if (typeof loadModels === "function") {
+
+            loadModels("inferModel");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

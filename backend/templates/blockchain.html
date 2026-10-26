@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Blockchain · MedChain</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="brand">
+        MED<span>CHAIN</span>
+    </div>
+
+    <nav>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/consent" id="consentNav">
+            Consent
+        </a>
+
+        <a href="/inference" id="inferenceNav">
+            AI Inference
+        </a>
+
+        <a class="active" href="/blockchain">
+            Blockchain
+        </a>
+
+        <a href="/admin/models" id="modelsNav">
+            Models
+        </a>
+
+        <form method="post" action="/logout">
+
+            <button
+                class="link-btn"
+                type="submit"
+            >
+                Sign out
+            </button>
+
+        </form>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+    <!-- =====================================================
+         PAGE HEADER
+         ===================================================== -->
+
+    <div class="page-head">
+
+        <div>
+
+            <div class="eyebrow">
+                ON-CHAIN AUDIT LAYER
+            </div>
+
+            <h1>
+                Blockchain Dashboard
+            </h1>
+
+            <p>
+                Inspect the local Hardhat network and
+                deployed Healthcare Consent Audit contract.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="connectChain()"
+        >
+            Connect MetaMask
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NETWORK + CONTRACT
+         ===================================================== -->
+
+    <div class="grid-2">
+
+
+        <!-- Network Status -->
+
+        <section class="card">
+
+            <div class="section-label">
+                NETWORK STATUS
+            </div>
+
+            <h2>
+                Hardhat connection
+            </h2>
+
+
+            <div class="metric-row">
+
+                <span>
+                    Connection
+                </span>
+
+                <strong id="chainStatus">
+                    Not connected
+                </strong>
+
+            </div>
+
+
+            <div class="metric-row">
+
+                <span>
+                    Expected chain
+                </span>
+
+                <strong>
+                    31337 · Localhost
+                </strong>
+
+            </div>
+
+
+            <div class="metric-row">
+
+                <span>
+                    Wallet
+                </span>
+
+                <strong
+                    id="walletAddress"
+                    class="mono"
+                >
+                    Not connected
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Smart Contract -->
+
+        <section class="card">
+
+            <div class="section-label">
+                SMART CONTRACT
+            </div>
+
+            <h2>
+                Contract registry
+            </h2>
+
+
+            <div
+                class="mono"
+                id="contractAddress"
+            >
+                0x5FbDB2315678afecb367f032d93F642f64180aa3
+            </div>
+
+
+            <p>
+                Contract:
+                <code>
+                    HealthcareConsentAudit.sol
+                </code>
+            </p>
+
+
+            <div class="metric-row">
+
+                <span>
+                    Status
+                </span>
+
+                <strong class="ok">
+                    DEPLOYED
+                </strong>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DATA MINIMIZATION
+         ===================================================== -->
+
+    <section class="card">
+
+        <div class="section-label">
+            DATA MINIMIZATION
+        </div>
+
+        <h2>
+            What is recorded?
+        </h2>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <tr>
+
+                    <th>
+                        Item
+                    </th>
+
+                    <th>
+                        On-chain
+                    </th>
+
+                    <th>
+                        Reason
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Consent metadata
+                    </td>
+
+                    <td class="ok">
+                        Yes
+                    </td>
+
+                    <td>
+                        Authorization evidence
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Patient medical record
+                    </td>
+
+                    <td>
+                        No
+                    </td>
+
+                    <td>
+                        Privacy
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Model digest
+                    </td>
+
+                    <td class="ok">
+                        Yes
+                    </td>
+
+                    <td>
+                        Version integrity
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Output digest
+                    </td>
+
+                    <td class="ok">
+                        Yes
+                    </td>
+
+                    <td>
+                        Receipt integrity
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Raw AI input
+                    </td>
+
+                    <td>
+                        No
+                    </td>
+
+                    <td>
+                        Minimize exposure
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="/js/app.js"></script>
+
+<script src="/js/blockchain.js"></script>
+
+
+</body>
+
+</html>
